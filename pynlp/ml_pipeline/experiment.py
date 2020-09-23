@@ -46,7 +46,7 @@ def run(task_name, data_dir, pipeline_name, print_predictions, error_analysis, r
     # logger.info(utils.print_prediction(test_X, test_y, sys_y))
 
     if print_predictions:
-        logger.info('>> predictions')
+        logger.info('>> predictions1')
         utils.print_all_predictions(test_X_ref, test_y, sys_y, logger)
 
     if error_analysis:

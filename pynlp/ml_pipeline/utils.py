@@ -76,7 +76,7 @@ def eval(test_y, sys_y, pipeline_name, data_dir):
     df = pd.DataFrame(report).transpose()
 
     dir = data_dir.split('/')[-2]
-    df.to_csv(f'./data/results/{dir}/{pipeline_name}.csv', index=False)
+    df.to_csv(f'../results/{dir}/{pipeline_name}.csv', index=False)
 
     return report
 
@@ -116,7 +116,7 @@ def load_keras_model(dir):
     return model
 
 
-# --------------reporting predictions per document --------------------
+# --------------reporting predictions1 per document --------------------
 
 
 def print_all_predictions(test_X, test_y, sys_y, logger):
@@ -145,7 +145,7 @@ def hate_lexicon():
 
 
 def print_error_analysis(test_X, test_y, sys_y):
-    print('Incorrect predictions:')
+    print('Incorrect predictions1:')
     print("pred\t", "gold\t", "text")
     for i in range(0, len(sys_y)):
         if sys_y[i] != test_y[i]:
