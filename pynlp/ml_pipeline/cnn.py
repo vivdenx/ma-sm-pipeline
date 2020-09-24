@@ -5,6 +5,7 @@ https://github.com/keras-team/keras/blob/master/examples/imdb_cnn.py
 '''
 from __future__ import print_function
 
+import pandas as pd
 from keras.layers import Conv1D, GlobalMaxPooling1D
 from keras.layers import Dense, Dropout, Activation
 from keras.layers import Embedding
@@ -12,7 +13,6 @@ from keras.models import Sequential
 from keras.preprocessing import sequence
 from keras.preprocessing.text import one_hot
 from ml_pipeline import utils
-import pandas as pd
 
 # from tasks import offenseval as of
 

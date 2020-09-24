@@ -1,9 +1,9 @@
+import numpy as np
 from ml_pipeline import preprocessing, representation
 from sklearn import svm
-import numpy as np
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
-from sklearn.ensemble import RandomForestClassifier
 
 
 def pipeline(preprocessor, representation, classifier):

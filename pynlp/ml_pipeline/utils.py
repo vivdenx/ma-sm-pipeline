@@ -1,8 +1,7 @@
-import pickle
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import pickle
 import seaborn as sns
 from keras.models import load_model
 from sklearn.metrics import confusion_matrix
@@ -56,13 +55,11 @@ def descriptive_statistics(train_X, train_y, test_X, test_y):
 
     print('Training statistics')
     for name, val in train_y.value_counts().items():
-        print(f'\t{name}: {val} ({round(val/len(train_y)*100,1)}%)')
+        print(f'\t{name}: {val} ({round(val / len(train_y) * 100, 1)}%)')
 
     print('Test statistics')
     for name, val in test_y.value_counts().items():
-        print(f'\t{name}: {val} ({round(val/len(test_y)*100,1)}%)')
-
-
+        print(f'\t{name}: {val} ({round(val / len(test_y) * 100, 1)}%)')
 
 
 # ----------- grid search ----------------------
