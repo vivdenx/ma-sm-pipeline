@@ -22,6 +22,9 @@ def run(task_name, data_dir, pipeline_name, print_predictions, error_analysis, r
     tsk.load(data_dir)
     logger.info('>> retrieving train/data instances...')
     train_X, train_y, test_X, test_y = utils.get_instances(tsk, split_train_dev=False)
+
+    logger.info('>> Descriptive statistics dataset:')
+    utils.descriptive_statistics(train_X, train_y, test_X, test_y)
     test_X_ref = test_X
 
     if remove_stopwords:
@@ -33,10 +36,12 @@ def run(task_name, data_dir, pipeline_name, print_predictions, error_analysis, r
         pipe = cnn(pipeline_name)
         train_X, train_y, test_X, test_y = pipe.encode(train_X, train_y, test_X, test_y)
         logger.info('>> testing CNN...')
+
     else:
         pipe = pipeline(pipeline_name)
 
     logger.info('>> training pipeline ' + pipeline_name)
+
     pipe.fit(train_X, train_y)
     if pipeline_name == 'naive_bayes_counts_lex':
         logger.info("   -- Found {} tokens in lexicon".format(pipe.tokens_from_lexicon))
@@ -98,6 +103,8 @@ def pipeline(name):
         return pipelines.svm_libsvc_tfidf()
     elif name == 'svm_libsvc_tfidf_stopwords':
         return pipelines.svm_libsvc_tfidf_stopwords()
+    elif name == 'svm_libsvc_counts_bigram':
+        return pipelines.svm_libsvc_counts_bigram()
     elif name == 'svm_libsvc_embed':
         return pipelines.svm_libsvc_embed()
     elif name == 'svm_sigmoid_embed':

@@ -70,11 +70,20 @@ def svm_libsvc_counts():
                                   dual=False, C=0.1))
 
 
+def svm_libsvc_counts_bigram():
+    return pipeline(preprocessing.std_prep(),
+                    representation.count_vectorizer({'min_df': 1, 'ngram_range': (2, 2)}),
+                    svm.LinearSVC(max_iter=10000,
+                                  dual=False,
+                                  C=0.1))
+
+
 def svm_libsvc_tfidf():
     return pipeline(preprocessing.std_prep(),
                     representation.tfidf_vectorizer(),
                     svm.LinearSVC(max_iter=10000,
-                                  dual=False, C=0.1))
+                                  dual=False,
+                                  C=0.1))
 
 
 def svm_libsvc_embed():

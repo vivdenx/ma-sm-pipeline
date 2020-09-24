@@ -46,6 +46,25 @@ def split(train_X, train_y, proportion_train, proportion_dev, shuffle=True):
     return df_train['X'].values, df_train['y'].values, df_dev['X'].values, df_dev['y'].values
 
 
+# ------------- descriptive statistics ------------
+
+def descriptive_statistics(train_X, train_y, test_X, test_y):
+    total_len = len(train_y) + len(test_y)
+    print(f'\tTotal length: {total_len}\n'
+          f'\tTotal train length: {len(train_y)}\n'
+          f'\tTotal test length: {len(test_y)}')
+
+    print('Training statistics')
+    for name, val in train_y.value_counts().items():
+        print(f'\t{name}: {val} ({round(val/len(train_y)*100,1)}%)')
+
+    print('Test statistics')
+    for name, val in test_y.value_counts().items():
+        print(f'\t{name}: {val} ({round(val/len(test_y)*100,1)}%)')
+
+
+
+
 # ----------- grid search ----------------------
 
 def report(results, n_top=3):
